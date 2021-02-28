@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        {{#if user}}
+        <a href="#menu-toggle" class="mr-5" id="menu-toggle"><i class="fa fa-bars fa-lg"></i></a>
+        {{/if}}
+        <!-- Brand -->
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" style=" position: relative; font-weight: 900;font-size: 1.3rem;" class="d-inline-block align-top" alt="">&nbsp;&nbsp;
+            <span style="color:#7CBB00;">Student</span> Management System
+        </a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbardrop" data-toggle="dropdown">
+                        <img src="/img/logos/icons/avatar.png" width="30" height="30" alt="">&nbsp;&nbsp;
+                        {{user.email}} <i class="fa fa-angle-down fa-lg"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-left bg-primary">
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-cogs fa-lg"></i>&nbsp; Settings
+                        </a>
+                        <a class="dropdown-item" href="/users/signout">
+                            <i class="fa fa-power-off fa-lg"></i>&nbsp; Logout
+                        </a>
+                    </div>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,90 @@
+<div class="container-fluid" id="container-fluid">
+    {{#if course}}
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="padding-left:20px;">Course Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Course Duration</th>
+                <th scope="col">Starts</th>
+                <th scope="col">Ends</th>
+                <th scope="col">Course Fee</th>
+                <th scope="col">Intake</th>
+                <th scope="col" id="hide-item">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each course}}
+            <tr>
+                <td style="padding-left:20px;">{{courseName}}</td>
+                <td>{{departmentName}}</td>
+                <td>{{courseDuration}}</td>
+                <td>{{startDate}}</td>
+                <td>{{endDate}}</td>
+                <td>{{courseFee}}</td>
+                <td>{{intake}}</td>
+                <td class="hide-element">
+                    <div class="dropdown" id="customized-dropdown">
+                        <button type="button" class="btn btn-default" data-toggle="dropdown">
+                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right animated fadeIn">
+                            <li class="edit-item">
+                                <a class="dropdown-item" href="/courses/edit?id={{id}}">
+                                    Edit
+                                </a>
+                            </li>
+                            <li class="del-item">
+                                <a href="#" class="dropdown-item" onclick="deleteItem('/courses/{{id}}');">Delete</a>
+                            </li>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <br>
+
+    <ul class="pagination">
+        {{#paginate current=current pages=pages}} {{/paginate}}
+    </ul>
+
+    {{#unless user.privileges.update}}
+    <script>
+        let updateItems = document.getElementsByClassName('edit-item'), count;
+        let hideItems = document.getElementsByClassName('hide-element'), x;
+
+        for (count = 0; count < updateItems.length; count++) {
+            updateItems[count].style.display = 'none';
+        }
+
+        for (x = 0; x < hideItems.length; x++) {
+            hideItems[x].style.display = 'none';
+        }
+
+        document.getElementById('hide-item').style.display = 'none';
+    </script>
+    {{/unless}}
+
+    {{#unless user.privileges.delete}}
+    <script>
+        let items = document.getElementsByClassName("del-item"), i;
+
+        for (i = 0; i < items.length; i++) {
+            items[i].style.display = 'none';
+        }
+    </script>
+    {{/unless}}
+
+    {{/if}}
+</div>
+
+<a href="#exampleModalCenter" class="float-search" data-toggle="modal">
+    <i class="fa fa-search my-float"></i>
+</a>
+
+<a href="/courses/add" class="float">
+    <i class="fa fa-plus my-float"></i>
+</a>

@@ -1,0 +1,46 @@
+<form action="/users/signin" method="POST" class="form-signin">
+
+    {{#if error}}
+
+    <div class="alert alert-danger alert-dismissible fade show custom-alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="media">
+            <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i>
+            <div class="media-body ml-4">
+                <h6 class="mt-2" style="line-height:5px;"><strong>{{error}}.</strong></h6>
+                Change a few things up and try after sometime.
+            </div>
+        </div>
+    </div>
+
+    {{/if}}
+
+    <div class="media">
+        <img class="mr-4" src="/img/logos/icons/padlock.png" width="60" alt="Generic placeholder image" style="margin-top:-7px;">
+        <div class="media-body">
+            <h5 class="mt-0">Sign in to the Dashboard</h5>
+            <h6>Please enter your credentials</h6>
+        </div>
+    </div>
+
+    <hr style="margin-top:25px;margin-bottom:25px;">
+
+    <div class="form-group">
+        <label for="formGroupExampleInput">Email</label>
+        <input type="email" class="form-control" name="email" placeholder="Enter email" autocomplete="off" autofocus>
+    </div>
+
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Password</label>
+        <input type="password" class="form-control" name="password" placeholder="Enter password" autocomplete="off">
+    </div>
+
+    <button type="submit" class="btn btn-default btn-block btn-lg mt-4">Sign in</button>
+    </form>
+    <p class="text-center mt-4">Don't have an account? Create one <a href="/users/signup">here</a></p>
+    <p class="text-center" style="margin-top:-20px;">
+        <a href="#">Forgot Password?</a>
+    </p>
+
